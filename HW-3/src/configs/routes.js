@@ -1,0 +1,16 @@
+export default Object.freeze({
+  AUTH: '/auth',
+  MENU: '/menu',
+  MENU_ITEM: '/menu/:id',
+  //INGREDIENTS_ITEM: '/menu/:ingredients',
+  MENU_ADD: '/menu/add',
+  ORDER_HISTORY: '/order-history',
+  CART: '/cart',
+  CHECKOUT: '/checkout',
+  ACCOUNT: '/account',
+  PLANNER: '/planner',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+  DELIVERY: '/delivery',
+  FAVOURITES: '/favourites',
+});
