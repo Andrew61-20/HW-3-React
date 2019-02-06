@@ -50,11 +50,8 @@ export default class MenuAdd extends Component {
     API.addMenuItem(inpValue).then(responseInpValue => {
       if (!responseInpValue) return;
       console.log('responseInpValue', responseInpValue);
-	  
     });
-	
     const { state } = this.props.location;
-	this.setState({ingredients: []});
     // const { menu } = this.state;
     // state это поле в location, а не state - состояние
     // Если есть запись в state, откуда пришли, добавляем в историю эту запись
@@ -91,7 +88,7 @@ export default class MenuAdd extends Component {
           <button type="submit">Добавить ингредиент</button>
           <br />
           {ingredients.map(el => (
-            <p key={el}>{el}</p>
+            <p>{el}</p>
           ))}
         </form>
         <form
@@ -102,7 +99,7 @@ export default class MenuAdd extends Component {
               description,
               image,
               price,
-              //ingredients,
+              ingredients,
             })
           }
         >
