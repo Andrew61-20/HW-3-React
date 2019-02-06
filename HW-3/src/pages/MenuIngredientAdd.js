@@ -9,15 +9,11 @@ export default class MenuIngredientAdd extends Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
-    // e.target.name: e.target.value была бы такая запись,
-    // если не деструктуризировать e, то есть handleChange = е => {
   };
 
   handleAddItem = inpValue => {
-    // inpValue.preventDefault();
     API.addMenuItem(inpValue).then(responseInpValue => {
       if (!responseInpValue) return;
-      console.log('responseInpValue', responseInpValue);
     });
   };
 

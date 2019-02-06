@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MenuCard = ({ name, image, price }) => (                 //ingredients=[]}
+const MenuCard = ({ name, image, price }) => (                 
   <div>
     <img src={image} alt={name} width={320} height={240} />
     <p>{name}</p>
@@ -10,7 +10,3 @@ const MenuCard = ({ name, image, price }) => (                 //ingredients=[]}
 );
 
 export default MenuCard;
-
-//<ul>
-    //ingredients.map(el => <li key={el}>{el}</li>)
-//</ul>

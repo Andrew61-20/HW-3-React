@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import * as API from '../services/api';
 import MenuCategoryAdd from '../modules/menu/MenuCategoryAdd';
-// import MenuIngredientAdd from '../modules/menu/MenuIngredientAdd';
-/* <MenuCategoryAdd categories={categories} /> */
 
 const INITIAL_STATE = {
   category: '',
@@ -23,8 +21,6 @@ export default class MenuAdd extends Component {
   async componentDidMount() {
     try {
       const categories = await API.getCategories();
-      console.log(categories);
-
       this.setState({ categories });
     } catch (error) {}
   }
@@ -33,12 +29,9 @@ export default class MenuAdd extends Component {
     const { name, value } = target;
 
     this.setState({ [name]: value });
-    // e.target.name: e.target.value была бы такая запись,
-    // если не деструктуризировать e, то есть handleChange = е => {
-  };
+   };
 
   handleAddIngredient = (e, ingredient) => {
-    // e.preventDefault(); без этого будет печаль
     e.preventDefault();
     this.setState({
       ingredients: [...this.state.ingredients, ingredient],
@@ -49,17 +42,13 @@ export default class MenuAdd extends Component {
   handleAddItem = inpValue => {
     API.addMenuItem(inpValue).then(responseInpValue => {
       if (!responseInpValue) return;
-      console.log('responseInpValue', responseInpValue);
     });
     const { state } = this.props.location;
-    // const { menu } = this.state;
-    // state это поле в location, а не state - состояние
-    // Если есть запись в state, откуда пришли, добавляем в историю эту запись
+    
     if (state) {
       return this.props.history.push(state.from);
     }
-    // В противном случае, добавляем руками
-    this.props.history.push('/menu');
+   this.props.history.push('/menu');
   };
 
   render() {

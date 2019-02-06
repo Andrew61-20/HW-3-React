@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import * as API from '../services/api';
 
 export default class MenuIngredientsAdd extends Component {
   state = {
@@ -10,8 +9,6 @@ export default class MenuIngredientsAdd extends Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
-    // e.target.name: e.target.value была бы такая запись,
-    // если не деструктуризировать e, то есть handleChange = е => {
   };
 
   handleAddItem = (e, ingredient) => {
@@ -20,18 +17,11 @@ export default class MenuIngredientsAdd extends Component {
       ingredients: [...this.state.ingredients, ingredient],
       ingredient: 0,
     });
-    // this.setState({ingredients: [this.state.ingredients.push(ingredient)]})
-    // return this.state.ingredients;
-    // inpValue.preventDefault();
-    // API.addIngredientsItem(inpValue).then(responseInpValue => {
-    // if (!responseInpValue) return;
-    console.log(this.state.ingredients);
-  };
+   };
 
   render() {
     const {
-      // ingredients = [],
-      ingredient,
+     ingredient,
     } = this.state;
     return (
       <div>

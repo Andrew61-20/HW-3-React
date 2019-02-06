@@ -9,8 +9,6 @@ const styles = {
 const CategorySelector = ({ options, value, onChange }) => (
   <select
     style={styles.select}
-    // value={currentCategory} значение категории берет из строки запроса, а не состояния
-    // Если написать руками категорию в строке и нажать ентер, перейдет туда
     value={value}
     onChange={e => onChange(e.target.value)}
   >
@@ -23,17 +21,3 @@ const CategorySelector = ({ options, value, onChange }) => (
 );
 
 export default CategorySelector;
-
-// Пример для селектора lifecycle and api
-// handleCategoryChange = evt => {
-//   this.setState({
-//     category: evt.target.value
-//   });
-// };
-
-// Пример из этого случая   handleCategoryChange = category => {
-//   this.props.history.push({
-//     pathname: this.props.location.pathname,
-//     search: `category=${category}`
-//   });
-// };

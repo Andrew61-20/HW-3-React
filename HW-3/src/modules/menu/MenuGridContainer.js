@@ -9,8 +9,8 @@ import * as API from '../../services/api';
 
 const getCategoryFromProps = props =>
   queryString.parse(props.location.search).category;
-// Logic
-export default class MenuGridContainer extends Component {
+
+ export default class MenuGridContainer extends Component {
   state = {
     menu: {},
     categories: [],
@@ -24,10 +24,7 @@ export default class MenuGridContainer extends Component {
 
     try {
       const menu = await API.getAllMenuItems();
-      console.log(menu);
       const categories = await API.getCategories();
-      console.log(categories);
-
       this.setState({ menu, categories, loading: false });
     } catch (error) {
       this.setState({ error, loading: false });
@@ -42,16 +39,13 @@ export default class MenuGridContainer extends Component {
     console.log('nextCategory: ', nextCategory);
 
     if (prevCategory === nextCategory) return;
-    // handleCategoryChange
     try {
       const menu = await API.getMenuItemsWithCategory(nextCategory);
-      console.log(menu);
-
       this.setState({ menu, loading: false });
     } catch (error) {
       this.setState({ error, loading: false });
     }
-    // handleClearSelector
+    
     if (this.props.location.search === '?all') {
       this.setState({ loading: true });
 
@@ -64,12 +58,7 @@ export default class MenuGridContainer extends Component {
     }
   }
 
-  // 13:00 метод добавляет в строку запроса параметры при выборе селектом категории
-  // this.props.location.pathname  добавляет текущий путь
-  // search: `category=${category}` - добавляет выбранную категорию
-  //   К примеру используется select для выбора категории статей. Тогда при выборе опции необходимо
-  // обновлять URL используя метод history.push() для добавления новой записи в журнал истории.
-  // Берем текущее значение location.pathname и обновляем search.
+  
   handleCategoryChange = category => {
     this.setState({ filter: true });
     this.props.history.push({
@@ -86,23 +75,10 @@ export default class MenuGridContainer extends Component {
       pathname: location.pathname,
       search: 'all',
     });
-    // Пример запроса (async await) в публичном методе класса
-    // *************************************************************
-    // (async () => {
-    //   try {
-    //     const menu = await API.getAllMenuItems();
-    //     console.log(menu);
-    //     this.setState({ menu, loading: false });
-    //   } catch (error) {
-    //     this.setState({ error, loading: false });
-    //   }
-    // })();
-  };
+   };
 
   render() {
-    // const { match, location, history } = this.props;
     const { menu, categories, loading, error, filter } = this.state;
-    console.log(queryString.parse(this.props.location.search));
     const currentCategory = getCategoryFromProps(this.props);
     return (
       <div>
@@ -115,8 +91,6 @@ export default class MenuGridContainer extends Component {
           <CategorySelector
             options={categories}
             value={currentCategory}
-            // value={currentCategory} значение категории берет из строки запроса, а не состояния
-            // Если написать руками категорию в строке и нажать ентер, перейдет туда
             onChange={this.handleCategoryChange}
           />
         )}

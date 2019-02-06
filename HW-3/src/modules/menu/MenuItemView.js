@@ -8,7 +8,6 @@ const MenuItemView = ({
     <h2 className="name"> {name}</h2>
     <p className="description"> {description}</p>
     <img className="image" src={image} alt={alt} width="200px" />
-    {/* <div>Menu Item ID: {id}</div> */}
     <p className="price">{price} UAH</p>
     <ul>
       {ingredients.map(elem => (

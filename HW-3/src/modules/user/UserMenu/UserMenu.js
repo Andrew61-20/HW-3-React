@@ -43,14 +43,6 @@ export default class UserMenu extends Component {
     this.setState({ isDropdownOpen: false });
   };
 
-  // closeDropdown = () => {
-  //   this.setState(prevstate => ({ isDropdownOpen: !prevstate.isDropdownOpen }));
-  // };
-
-  // consolHand = () => {
-  //   console.log('55555555555555555555');
-  // };
-
   render() {
     const { isDropdownOpen } = this.state;
     const { name, avatar } = this.props;
@@ -65,7 +57,7 @@ export default class UserMenu extends Component {
         <span className={s.name}>{name}</span>
         {isDropdownOpen && (
           <Dropdown
-            /* consol={this.consolHand} */ closeDropdown={this.closeDropdown} openDropdown={this.openDropdown}
+            closeDropdown={this.closeDropdown} openDropdown={this.openDropdown}
           />
         )}
       </div>

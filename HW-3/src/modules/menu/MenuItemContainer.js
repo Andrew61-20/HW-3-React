@@ -3,8 +3,6 @@ import MenuItem from './MenuItemView';
 import Loader from '../../components/Loader';
 import * as API from '../../services/api';
 
-//  getMenuItemById
-
 export default class MenuItemContainer extends Component {
   state = { menuItem: {}, loading: false, error: null };
 
@@ -13,10 +11,7 @@ export default class MenuItemContainer extends Component {
 
     try {
       const { id } = this.props;
-      // const { menuItem, loading, error } = this.state;
       const menuItem = await API.getMenuItemById(id);
-      console.log(menuItem);
-
       this.setState({ menuItem, loading: false });
     } catch (error) {
       this.setState({ error, loading: false });
@@ -25,7 +20,6 @@ export default class MenuItemContainer extends Component {
 
   render() {
     const { menuItem, loading, error } = this.state;
-    //const { id } = this.props;
     return (
       <div>
         {loading && <Loader />}
@@ -33,7 +27,5 @@ export default class MenuItemContainer extends Component {
         {!loading && <MenuItem menuItem={menuItem} />}
       </div>
     );
-
-    // return loading ? <Loader /> : <MenuItem id={id} menuItem={menuItem} />;
   }
 }

@@ -5,13 +5,8 @@ import userNavItems from '../../../../configs/user-nav';
 
 import s from './Dropdown.module.css';
 
-
-  
-
 const Dropdown = ({ closeDropdown, consol}) => (
-  
-  
-  <div className={s.container}>
+   <div className={s.container}>
     <ul>
       {userNavItems.map(item => (
         <li key={item.name} >

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// const BASE_URL = 'http://localhost:3001/menu';
 axios.defaults.baseURL = 'http://localhost:3001';
-// 1:01 задает дефолтную строку запроса
 
 const getAllMenuItems = async () => {
   const response = await axios.get('/menu');
@@ -29,20 +27,8 @@ const deleteMenuItem = id =>
 
 const addMenuItem = item =>
   axios.post('/menu', item).then(response => {
-    console.log(response);
     return response.data;
   });
-  
-//const addIngredientsItem = (ingredients, item) =>
-  //axios.post(`/menu/${ingredients}`, item).then(response => {
-    //console.log(response);
-    //return response.data;
-  //});
-  
-// Какого члена не работает такой запрос???
-// const getMenuItemsWithCategory = category => {
-//   axios.get(`/menu?category=${category}`).then(response => response.data);
-// };
 
 export {
   getAllMenuItems,
