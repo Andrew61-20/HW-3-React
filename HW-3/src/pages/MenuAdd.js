@@ -39,16 +39,19 @@ export default class MenuAdd extends Component {
     });
   };
 
-  handleAddItem = inpValue => {
+  handleAddItem = (inpValue, e) => {
+	e.preventDefault();
     API.addMenuItem(inpValue).then(responseInpValue => {
-      if (!responseInpValue) return;
-    });
-    const { state } = this.props.location;
-    
-    if (state) {
-      return this.props.history.push(state.from);
+	if (!responseInpValue) return ;
+	  const { state } = this.props.location;
+	if (state && responseInpValue) {
+	   return this.setState ({
+         menu: [...state, responseInpValue]	
+	 });
+	 this.props.history.push(state.from);
     }
-   this.props.history.push('/menu');
+     this.props.history.push('/menu');
+   });
   };
 
   render() {
@@ -81,7 +84,7 @@ export default class MenuAdd extends Component {
           ))}
         </form>
         <form
-          onSubmit={() =>
+          onSubmit={(e) =>
             this.handleAddItem({
               category,
               name,
@@ -89,7 +92,7 @@ export default class MenuAdd extends Component {
               image,
               price,
               ingredients,
-            })
+            }, e)
           }
         >
           <MenuCategoryAdd
